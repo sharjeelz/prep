@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Road to BS Cybersecurity — Prep Plan (Oct 2026 – Jan 2027)</title>
+<title>Road to BS Cybersecurity: Prep Plan (Oct 2026 – Jan 2027)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#F3F6F8; --surface:#FFFFFF; --ink:#1B2A41; --muted:#5E6E82; --line:#D5DDE5;
-  --trace:#0F7C7A; --trace-soft:#DCEFEE; --now:#C98A00; --now-soft:#FFF3D6; --done:#2E8B57;
+  --trace:#0F7C7A; --trace-soft:#DCEFEE; --now:#C98A00; --now-soft:#FFF3D6;
   --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Consolas,"Courier New",monospace;
   box-sizing:border-box;
@@ -20,92 +20,125 @@
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
     --bg:#0F1826; --surface:#172234; --ink:#E6EDF5; --muted:#9AA9BC; --line:#2A3A52;
-    --trace:#3FC1BD; --trace-soft:#143A3D; --now:#F2B632; --now-soft:#3A2E10; --done:#5CC98A;
+    --trace:#3FC1BD; --trace-soft:#143A3D; --now:#F2B632; --now-soft:#3A2E10;
   }
 }
 :root[data-theme="dark"]{
   --bg:#0F1826; --surface:#172234; --ink:#E6EDF5; --muted:#9AA9BC; --line:#2A3A52;
-  --trace:#3FC1BD; --trace-soft:#143A3D; --now:#F2B632; --now-soft:#3A2E10; --done:#5CC98A;
+  --trace:#3FC1BD; --trace-soft:#143A3D; --now:#F2B632; --now-soft:#3A2E10;
 }
 *,*::before,*::after{box-sizing:inherit}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 60px)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
 a{color:var(--trace);text-underline-offset:2px}
 code{font-family:var(--mono);font-size:.88em;background:var(--trace-soft);padding:.05em .35em;border-radius:4px}
-.wrap{max-width:760px;margin:0 auto;padding:28px 18px 60px}
+.wrap{max-width:780px;margin:0 auto;padding:28px 18px 60px}
 
 header h1{font-size:clamp(1.9rem,6vw,2.7rem);line-height:1.1;margin:0 0 10px;letter-spacing:-.02em;font-weight:700}
-header p{margin:0 0 20px;color:var(--muted);max-width:60ch}
+header p{margin:0 0 20px;color:var(--muted);max-width:62ch}
 .status{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:flex-end;margin-bottom:14px}
 .status .big{font-size:2.2rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
 .status small{display:block;color:var(--muted);font-size:.85rem;margin-top:4px}
 .bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
 .bar i{display:block;height:100%;width:0;background:var(--trace);transition:width .4s ease}
+.jump{margin-top:16px;font:inherit;font-weight:600;background:var(--ink);color:var(--bg);border:0;padding:10px 16px;border-radius:8px;cursor:pointer}
 
-.routine{margin:26px 0;padding:16px 18px;border-left:4px solid var(--trace);background:var(--surface);border-radius:0 8px 8px 0}
-.routine h2{font-size:1.05rem;margin:0 0 6px}
-.routine ul{margin:0;padding-left:1.1em}
-.routine li{margin:2px 0}
+.guide{margin:28px 0 8px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.guide summary{padding:14px 16px;font-weight:600;cursor:pointer}
+.guide .gbody{padding:0 18px 16px}
+.guide h3{font-size:1rem;margin:14px 0 4px;color:var(--trace)}
+.guide ol,.guide ul{margin:0;padding-left:1.25em}
+.guide li{margin:3px 0}
 
-nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 14px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 0 12px;position:sticky;top:0;padding-top:calc(env(safe-area-inset-top,0px) + 10px);background:var(--bg);z-index:5}
 nav.tabs button{font:inherit;font-size:.92rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
 nav.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--now);outline-offset:2px}
+button:focus-visible,summary:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--now);outline-offset:2px}
 
-.month{margin-top:26px}
-.month h2{font-size:1.35rem;margin:0 0 2px}
-.month .sub{color:var(--muted);margin:0 0 14px;font-size:.95rem}
+.month{margin-top:28px}
+.month h2{font-size:1.4rem;margin:0 0 4px}
+.month .sub{color:var(--muted);margin:0 0 10px}
+.outcomes{margin:0 0 18px;padding:12px 16px;border-left:4px solid var(--trace);background:var(--surface);border-radius:0 8px 8px 0}
+.outcomes b{display:block;margin-bottom:4px}
+.outcomes ul{margin:0;padding-left:1.1em}
 
-/* circuit-trace timeline */
 .timeline{position:relative;padding-left:30px}
 .timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line)}
 .week{position:relative;margin:0 0 12px}
 .week::before{content:"";position:absolute;left:-26px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
 .week.complete::before{background:var(--trace);border-color:var(--trace)}
 .week.now::before{background:var(--now);border-color:var(--now);box-shadow:0 0 0 5px var(--now-soft)}
-details{background:var(--surface);border:1px solid var(--line);border-radius:10px}
-.week.now details{border-color:var(--now)}
-summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center}
-summary::-webkit-details-marker{display:none}
-.wk-date{font-size:.82rem;color:var(--muted);grid-column:1}
-.wk-title{font-weight:600;font-size:1.05rem;grid-column:1}
+.week > details{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.week.now > details{border-color:var(--now)}
+.week > details > summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center}
+.week > details > summary::-webkit-details-marker{display:none}
+.wk-date{font-size:.82rem;color:var(--muted)}
+.wk-title{font-weight:600;font-size:1.05rem}
 .wk-count{grid-row:1/3;grid-column:2;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
-.now-tag{display:inline-block;background:var(--now-soft);color:var(--ink);border:1px solid var(--now);font-size:.75rem;padding:0 7px;border-radius:999px;margin-left:6px;vertical-align:2px;font-weight:500}
-.body{padding:0 16px 16px;border-top:1px solid var(--line)}
-.body h3{font-size:.95rem;margin:16px 0 6px;color:var(--trace)}
+.tag{display:inline-block;background:var(--now-soft);border:1px solid var(--now);font-size:.75rem;padding:0 7px;border-radius:999px;margin-left:6px;vertical-align:1px;font-weight:500;color:var(--ink)}
+.wbody{padding:4px 16px 16px;border-top:1px solid var(--line)}
+.goal{margin:12px 0 4px}
+.why{margin:0 0 10px;color:var(--muted);font-size:.93rem}
+.day{display:grid;grid-template-columns:92px 1fr;gap:4px 12px;padding:10px 0;border-top:1px dashed var(--line)}
+.day:first-of-type{border-top:0}
+.day.today{background:var(--now-soft);margin:0 -16px;padding:10px 16px}
+.dname{font-weight:600;font-size:.9rem;line-height:1.3}
+.dname small{display:block;font-weight:400;color:var(--muted);font-size:.8rem}
 .tasks{list-style:none;margin:0;padding:0}
-.tasks li{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+.tasks li{display:flex;gap:10px;align-items:flex-start;padding:3px 0}
 .tasks input{margin-top:5px;width:18px;height:18px;flex:none;accent-color:var(--trace);cursor:pointer}
 .tasks label{cursor:pointer}
 .tasks input:checked + label{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--muted)}
-.note{font-size:.9rem;color:var(--muted);margin:10px 0 0}
+.k{font-weight:600}
+@media (max-width:520px){.day{grid-template-columns:1fr}.dname small{display:inline;margin-left:6px}}
 
 footer{margin-top:40px;color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
 footer button{font:inherit;font-size:.88rem;background:none;border:1px solid var(--line);color:var(--muted);padding:6px 12px;border-radius:6px;cursor:pointer}
-@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>Road to BS Cybersecurity</h1>
-    <p>A week-by-week plan for the computer subjects of Semesters 1 and 2 (ICT, Programming Fundamentals, Discrete Structures, Digital Logic Design) plus a security head start. Follow the steps in order. Don't go exploring other parts of the sites — just do what's listed.</p>
+    <p>A day-by-day plan to learn the computer subjects of your first year (ICT, Programming Fundamentals, Discrete Structures, Digital Logic Design) and get a head start in security, before classes begin in February 2027.</p>
     <div class="status">
       <div><span class="big" id="daysLeft">–</span><small>days until February 1, 2027</small></div>
       <div><span class="big" id="pct">0%</span><small id="countTxt">tasks done</small></div>
     </div>
     <div class="bar" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100"><i id="barFill"></i></div>
+    <button class="jump" id="jumpBtn" type="button">Go to today</button>
   </header>
 
-  <section class="routine">
-    <h2>Daily routine (about 1.5–2 hours)</h2>
-    <ul>
-      <li>45–60 min: the "Learn" items of the current week.</li>
-      <li>30–45 min: the "Practice" items — type every program yourself, never copy-paste.</li>
-      <li>10 min: typing practice on <a href="https://monkeytype.com" target="_blank" rel="noopener">monkeytype.com</a>.</li>
-      <li>Sunday: do the "Done when" check. If you can't do it, repeat the week instead of moving on.</li>
-    </ul>
-  </section>
+  <details class="guide">
+    <summary>How to use this plan (read once before you start)</summary>
+    <div class="gbody">
+      <h3>The plan's shape</h3>
+      <ul>
+        <li><b>Monday–Friday:</b> one new lesson each day, followed straight away by an exercise on it.</li>
+        <li><b>Saturday:</b> practice day. Bigger problems that combine the week's lessons. Also your catch-up day if you missed something.</li>
+        <li><b>Sunday:</b> review day. You test yourself without notes and redo one exercise from earlier weeks so you don't forget it.</li>
+        <li><b>Last Sunday of each month:</b> a month test. Pass it before moving on.</li>
+        <li><b>Dec 28 – Jan 3:</b> a buffer week to catch up if you fall behind.</li>
+      </ul>
+      <h3>Every study session, in 4 steps (about 1.5–2 hours)</h3>
+      <ol>
+        <li>Read or watch the lesson. Type every code example yourself; don't copy-paste.</li>
+        <li>Close the lesson tab, then do the exercise from memory.</li>
+        <li>If you're stuck for 20 minutes, reopen the lesson, find the answer, then close it again and redo the exercise from scratch.</li>
+        <li>Write 3 lines in a notebook: what you learned, and one mistake you made.</li>
+      </ol>
+      <h3>From November</h3>
+      <p>Each day has a main subject (about 60 minutes) and a short C++ part (about 30 minutes), so your programming keeps growing while you learn the math and logic subjects.</p>
+      <h3>Materials you will use</h3>
+      <ul>
+        <li><b>C++:</b> learncpp.com lessons, linked directly. If a link ever opens the wrong page, type the lesson title into the search box on learncpp.com.</li>
+        <li><b>Discrete Structures:</b> Kenneth Rosen, <i>Discrete Mathematics and Its Applications</i> (7th or 8th edition, the standard course book in Pakistan). Section numbers are given for each day. Answers to odd-numbered exercises are at the back of the book.</li>
+        <li><b>Digital Logic Design:</b> Neso Academy's Digital Electronics playlist on YouTube (the exact video topic is given each day) and nand2tetris.org for building circuits.</li>
+        <li><b>Security:</b> TryHackMe rooms (free) and the OverTheWire Bandit game.</li>
+      </ul>
+    </div>
+  </details>
 
   <nav class="tabs" aria-label="Filter by month" id="tabs"></nav>
   <main id="plan"></main>
@@ -117,268 +150,425 @@ footer button{font:inherit;font-size:.88rem;background:none;border:1px solid var
 </div>
 
 <script>
-const LC = 'https://www.learncpp.com';
-const THM = 'https://tryhackme.com';
+/* ---------- link helpers ---------- */
+const L = (slug, title) => '<a href="https://www.learncpp.com/cpp-tutorial/'+slug+'/" target="_blank" rel="noopener">'+title+'</a>';
+const LS = (q, title) => '<a href="https://www.learncpp.com/?s='+encodeURIComponent(q)+'" target="_blank" rel="noopener">'+title+'</a>';
+const YT = q => '<a href="https://www.youtube.com/results?search_query='+encodeURIComponent(q)+'" target="_blank" rel="noopener">'+q+'</a>';
+const THM = room => '<a href="https://tryhackme.com/search?q='+encodeURIComponent(room)+'" target="_blank" rel="noopener">'+room+'</a>';
+const BANDIT = '<a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener">OverTheWire Bandit</a>';
+const GCF = (path, title) => '<a href="https://edu.gcfglobal.org/en/'+path+'/" target="_blank" rel="noopener">'+title+'</a>';
+const HR = '<a href="https://www.hackerrank.com/domains/cpp" target="_blank" rel="noopener">HackerRank C++</a>';
+const N2T = '<a href="https://www.nand2tetris.org/course" target="_blank" rel="noopener">nand2tetris</a>';
+const K = s => '<span class="k">'+s+'</span> ';
+
+/* ---------- months ---------- */
 const MONTHS = [
-  {id:'setup', name:'Setup', sub:'Get your tools ready before Week 1.'},
-  {id:'oct', name:'October — Computer basics and C++ start', sub:'Subjects: Application of ICT, Programming Fundamentals'},
-  {id:'nov', name:'November — Discrete Structures and more C++', sub:'Subjects: Discrete Structures, Programming Fundamentals'},
-  {id:'dec', name:'December — Digital Logic Design', sub:'Subject: Digital Logic Design'},
-  {id:'jan', name:'January — Security foundations and OOP preview', sub:'Preview of: Computer Networks, Information Security, Object Oriented Programming'}
+ {id:'setup', name:'Before you start', sub:'September 30 – October 4', out:['Your computer is ready to write and run C++ programs.']},
+ {id:'oct', name:'October: Computer basics and C++ foundations', sub:'Semester 1: Application of ICT · Semester 2: Programming Fundamentals',
+  out:['Explain how a computer works, from hardware to the internet.','Count and convert numbers in binary.','Write C++ programs with input, output, decisions and loops.']},
+ {id:'nov', name:'November: Discrete Structures + C++ functions and arrays', sub:'Semester 1: Discrete Structures · Semester 2: Programming Fundamentals',
+  out:['Work with logic, truth tables, proofs, sets, counting and relations.','Write C++ programs using functions, arrays, references, pointers and structs.','Build a menu-driven Student Record program.']},
+ {id:'dec', name:'December: Digital Logic Design + C++ revision', sub:'Semester 2: Digital Logic Design',
+  out:['Convert between number systems and do binary arithmetic.','Simplify logic with Boolean algebra and K-maps.','Design adders, multiplexers and decoders, and build them in a simulator.','Solve the classic Programming Fundamentals exam problems.']},
+ {id:'jan', name:'January: Security foundations + OOP preview', sub:'Preview of: Computer Networks, Information Security, Object Oriented Programming',
+  out:['Use the Linux command line comfortably.','Explain how networks and the web work.','Understand core security ideas.','Write your first C++ classes.']}
 ];
 
+/* C++ revision problems used in December (classic PF exam questions) */
+const REV = [
+ 'Check if a number is prime.',
+ 'Print all primes from 1 to 100 (reuse your prime function).',
+ 'GCD of two numbers using Euclid\'s algorithm (a loop with %).',
+ 'Reverse the digits of a number, then check if it is a palindrome.',
+ 'Print the first n Fibonacci numbers.',
+ 'Find all Armstrong numbers between 100 and 999.',
+ 'Sort an array of 10 numbers with bubble sort.',
+ 'Count the vowels in a sentence (use std::getline).',
+ 'Add two 3×3 matrices using 2D arrays.',
+ 'Print a pyramid of * with n rows.'
+];
+const R = i => K('C++ (30 min):')+REV[i];
+
+/* ---------- weeks: days = Mon..Sun, each an array of tasks ---------- */
 const WEEKS = [
-{id:'w0',m:'setup',s:'2026-09-30',e:'2026-10-04',t:'Set up your computer',
- learn:[
-  'Install <b>Code::Blocks</b> from codeblocks.org → Downloads → Binary release → pick the Windows installer that has <code>mingw</code> in its name (it includes the C++ compiler).',
-  'Open Code::Blocks → File → New → Project → Console application → C++. Press <b>F9</b> (Build and run). If "Hello world!" appears, your setup works.'
- ],
- practice:[
-  'Create free accounts on <a href="https://www.hackerrank.com" target="_blank" rel="noopener">HackerRank</a> and <a href="'+THM+'" target="_blank" rel="noopener">TryHackMe</a>.',
-  'Make a folder <code>uni-prep</code> with subfolders <code>oct</code>, <code>nov</code>, <code>dec</code>, <code>jan</code>. Save every program there.',
-  'Take one typing test on monkeytype.com and write your speed (WPM) down.'
- ],
- check:['Code::Blocks runs a program and you have both accounts.']},
+{id:'w0',m:'setup',s:'2026-09-30',t:'Set up your computer',flat:true,
+ goal:'Have a working C++ setup before Week 1.',
+ why:'You will write a program almost every day, so the tools must just work.',
+ days:[[
+  'Install <b>Code::Blocks</b>: codeblocks.org → Downloads → Binary release → choose the Windows installer with <code>mingw</code> in its name (it includes the compiler).',
+  'Open Code::Blocks → File → New → Project → Console application → C++. Press <b>F9</b>. If "Hello world!" appears, your setup works.',
+  'Take one typing test on <a href="https://monkeytype.com" target="_blank" rel="noopener">monkeytype.com</a> and write your speed (WPM) in your notebook. Practise 10 minutes a day from now on.'
+ ]]},
 
-{id:'w1',m:'oct',s:'2026-10-05',e:'2026-10-11',t:'How computers work (ICT)',
- learn:[
-  'Go to <a href="https://edu.gcfglobal.org/en/computerbasics/" target="_blank" rel="noopener">GCFGlobal — Computer Basics</a> and do the lessons in order (about 2–3 hours total). Skip only the lessons about Mac if you use Windows.',
-  'Watch <b>CS50x Lecture 0</b> (search YouTube for "CS50x Lecture 0 Scratch"). Watch only until the Scratch part starts — the first part covers binary, ASCII, and algorithms.'
- ],
- practice:[
-  'On paper, write numbers 0 to 15 in binary.',
-  'Learn 10 shortcuts: Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z, Ctrl+S, Ctrl+F, Alt+Tab, Win+D, Win+E, Ctrl+Shift+Esc. Use them all week.',
-  'In File Explorer: turn on "File name extensions" (View menu). Notice .exe, .txt, .cpp.'
- ],
- check:['Explain in your own words: CPU vs RAM vs storage, and what an operating system does.','Convert 13 to binary and 1011 to decimal without help.']},
+/* ===== OCTOBER ===== */
+{id:'w1',m:'oct',s:'2026-10-05',t:'How a computer works',
+ goal:'By Sunday you can explain what is inside a computer, what an operating system does, how the internet connects computers, and why computers use binary.',
+ why:'This is the core of Application of ICT, and every later subject builds on it.',
+ days:[
+  [K('Learn:')+GCF('computerbasics','GCFGlobal Computer Basics')+': lessons "What is a Computer?", "Basic Parts of a Computer" and "Inside a Computer".',
+   K('Do:')+'Open Task Manager (Ctrl+Shift+Esc) → Performance. Write down your CPU name, RAM size and disk size. Next to each, write one line on what that part does.'],
+  [K('Learn:')+'Same tutorial: "Understanding Operating Systems" and "Understanding Applications".',
+   K('Do:')+'List 5 programs you use daily. Mark each as system software or application software. Write 3 differences between Windows and Linux.'],
+  [K('Learn:')+'Same tutorial: the lessons on files, folders and file extensions.',
+   K('Do:')+'In File Explorer, turn on View → File name extensions. Find one file of each type: .exe, .txt, .pdf, .zip. Zip a folder and unzip it again.'],
+  [K('Learn:')+GCF('internetbasics','GCFGlobal Internet Basics')+': "What is the Internet?" and "Connecting to the Internet".',
+   K('Do:')+'In 4–5 sentences, explain what happens when you open a website. Keep this; you will compare it with what you know in January.'],
+  [K('Learn:')+'Watch '+YT('CS50x Lecture 0')+' up to where Scratch starts (about 40–50 minutes): binary, ASCII, colours and algorithms.',
+   K('Do:')+'On paper, write 0 to 15 in binary. Then write the word "HI" in ASCII binary.'],
+  [K('Practice:')+GCF('excel','GCFGlobal Excel')+': "Cell Basics" and "Intro to Formulas". Make a sheet of 7 days with study minutes and use SUM and AVERAGE.',
+   K('Practice:')+'Use these shortcuts all day: Ctrl+C/V/X/Z/S/F, Alt+Tab, Win+D, Win+E, Ctrl+Shift+Esc.'],
+  [K('Self-test (no notes):')+'Explain CPU vs RAM vs storage. Explain what an OS does. Convert 13 to binary and 1011 to decimal.',
+   K('If you couldn\'t:')+'Redo that day\'s lesson today.']
+ ]},
 
-{id:'w2',m:'oct',s:'2026-10-12',e:'2026-10-18',t:'C++ first steps',
- learn:[
-  'learncpp.com <b>Chapter 0</b> (Introduction / Getting Started) — read it all. You can skip the lessons about installing Visual Studio since you already have Code::Blocks.',
-  'learncpp.com <b>Chapter 1</b> (C++ Basics) — all lessons, including the quiz at the end.'
- ],
- practice:[
-  'Program 1: print your name, city and university on three lines.',
-  'Program 2: ask the user for their age, then print their age in 10 years.',
-  'Program 3: read three numbers and print their sum and average.',
-  'HackerRank → Prepare → C++ → Introduction: solve "Say Hello, World! With C++", "Input and Output", "Basic Data Types".'
- ],
- check:['You can write Program 3 from a blank file without looking anything up.']},
+{id:'w2',m:'oct',s:'2026-10-12',t:'C++ first steps: input, output, variables',
+ goal:'By Sunday you can write a program from a blank file that reads numbers, calculates and prints a result.',
+ why:'Programming Fundamentals (4 credit hours) is the biggest computing course in your first year, and everything after it uses programming.',
+ days:[
+  [K('Learn:')+L('introduction-to-programming-languages','Introduction to programming languages')+' and '+L('introduction-to-the-compiler-linker-and-libraries','Introduction to the compiler, linker, and libraries')+'.',
+   K('Do:')+'Make a new project and type Hello World yourself. Change the message and run it. Then delete one semicolon, run it, and read the error message.'],
+  [K('Learn:')+L('statements-and-the-structure-of-a-program','Statements and the structure of a program')+', '+L('comments','Comments')+', '+L('introduction-to-objects-and-variables','Introduction to objects and variables')+', '+L('variable-assignment-and-initialization','Variable assignment and initialization')+'.',
+   K('Do:')+'Create variables for your age and your height in cm and print them on separate lines with labels.'],
+  [K('Learn:')+L('introduction-to-iostream-cout-cin-and-endl','Introduction to iostream: cout, cin, and endl')+' and '+L('uninitialized-variables-and-undefined-behavior','Uninitialized variables and undefined behavior')+'.',
+   K('Do:')+'Ask the user for their age and print their age in 10 years.'],
+  [K('Learn:')+L('keywords-and-naming-identifiers','Keywords and naming identifiers')+', '+L('introduction-to-literals-and-operators','Introduction to literals and operators')+', '+L('introduction-to-expressions','Introduction to expressions')+'.',
+   K('Do:')+'Read three whole numbers and print their sum and average. Try 1, 2, 2: the average looks wrong. Write down why you think so (you will find out on Monday).'],
+  [K('Learn:')+L('developing-your-first-program','Developing your first program')+', then do the '+L('chapter-1-summary-and-quiz','Chapter 1 summary and quiz')+'.',
+   K('Do:')+'Read the length and width of a rectangle. Print its area and perimeter.'],
+  [K('Practice:')+'On '+HR+' (sign up free) → Introduction: "Say Hello, World! With C++", "Input and Output", "Basic Data Types".',
+   K('Practice:')+'Read a number of minutes and print it as hours and minutes (e.g. 135 → 2 h 15 min). Hint: use / and %.'],
+  [K('Self-test (no notes):')+'In a new file, rewrite the sum and average program in under 15 minutes.',
+   K('Notebook:')+'Explain in your own words: variable, initialization, cin, cout.']
+ ]},
 
-{id:'w3',m:'oct',s:'2026-10-19',e:'2026-10-25',t:'C++ functions and data types',
- learn:[
-  'learncpp.com <b>Chapter 2</b> (C++ Basics: Functions and Files) — lessons 2.1 to 2.7. Skip the multi-file lessons after that for now.',
-  'learncpp.com <b>Chapter 4</b> (Fundamental Data Types) — all lessons.'
- ],
- practice:[
-  'Write functions <code>add(a, b)</code>, <code>maxOf(a, b)</code>, and <code>circleArea(r)</code>, and call them from main().',
-  'Temperature converter: read Celsius, print Fahrenheit (F = C × 9/5 + 32). Use a function.',
-  'HackerRank C++ Introduction: "Conditional Statements" and "Functions".'
- ],
- check:['You know the difference between int, double, char, bool, and why 7/2 gives 3 in C++.']},
+{id:'w3',m:'oct',s:'2026-10-19',t:'Data types and decisions',
+ goal:'By Sunday you can choose the right data type and make your program take different paths with if and switch.',
+ why:'Choosing types and writing conditions is in every Programming Fundamentals exam, and integer limits come back later in security (overflow bugs).',
+ days:[
+  [K('Learn:')+L('introduction-to-fundamental-data-types','Introduction to fundamental data types')+', '+L('signed-integers','Signed integers')+', '+L('floating-point-numbers','Floating point numbers')+'.',
+   K('Do:')+'Fix last week\'s average program using double. Print 7/2 and 7.0/2 and write why they differ.'],
+  [K('Learn:')+L('boolean-values','Boolean values')+', '+L('chars','Chars')+', '+L('introduction-to-type-conversion-and-static_cast','Introduction to type conversion and static_cast')+'.',
+   K('Do:')+'Read a character and print its ASCII number using static_cast&lt;int&gt;. Check that "H" gives the same number you found in Week 1.'],
+  [K('Learn:')+LS('Introduction to std::string','Introduction to std::string')+' (open the lesson with this title).',
+   K('Do:')+'Ask for the user\'s full name with std::getline, then print "Hello, NAME" and the number of letters.'],
+  [K('Learn:')+L('arithmetic-operators','Arithmetic operators')+', '+L('relational-operators-and-floating-point-comparisons','Relational operators')+', '+L('logical-operators','Logical operators')+'.',
+   K('Do:')+'Read a year and print 1 if it is a leap year, else 0, using one expression with &&, || and %.'],
+  [K('Learn:')+L('introduction-to-if-statements','Introduction to if statements')+', '+L('if-statements-and-blocks','If statements and blocks')+', '+L('common-if-statement-problems','Common if statement problems')+'.',
+   K('Do:')+'Even/odd checker. Then: read 3 numbers and print the largest.'],
+  [K('Learn:')+L('switch-statement-basics','Switch statement basics')+'.',
+   K('Practice:')+'Grade calculator: marks → A/B/C/D/F, and reject marks below 0 or above 100. Then a calculator: read two numbers and an operator (+ − * /) and use switch. Handle division by zero.',
+   K('Practice:')+HR+' → "Conditional Statements".'],
+  [K('Self-test (no notes):')+'Explain int vs double, = vs ==, and && vs ||.',
+   K('Review:')+'Redo the Week 2 rectangle program and add: if the area is over 100, print "Large".']
+ ]},
 
-{id:'w4',m:'oct',s:'2026-10-26',e:'2026-11-01',t:'C++ decisions and loops + Excel basics',
- learn:[
-  'learncpp.com <b>Chapter 6</b> (Operators) — all lessons.',
-  'learncpp.com <b>Chapter 8</b> (Control Flow) — all lessons (if, switch, while, do-while, for, break, continue, random numbers).',
-  '<a href="https://edu.gcfglobal.org/en/excel/" target="_blank" rel="noopener">GCFGlobal — Excel</a>: only the lessons on cells, formulas, and functions.'
- ],
- practice:[
-  'Even/odd checker.',
-  'Grade calculator: marks → A/B/C/D/F.',
-  'Print the multiplication table of any number the user types.',
-  'FizzBuzz for 1 to 100.',
-  'Number guessing game: computer picks 1–100, user guesses, program says "higher" or "lower".',
-  'HackerRank C++ Introduction: "For Loop".',
-  'Excel: make a sheet of your daily study hours for October with SUM and AVERAGE.'
- ],
- check:['You can build the guessing game from scratch in under 30 minutes.']},
+{id:'w4',m:'oct',s:'2026-10-26',t:'Loops',
+ goal:'By Sunday you can use while, do-while and for loops, and combine loops with if to solve problems.',
+ why:'Loops are where programming starts to feel powerful. Most Programming Fundamentals problems need them.',
+ days:[
+  [K('Learn:')+L('intro-to-loops-and-while-statements','Intro to loops and while statements')+'.',
+   K('Do:')+'Print 1 to 10. Then read n and print the sum 1 + 2 + … + n.'],
+  [K('Learn:')+L('do-while-statements','Do while statements')+'.',
+   K('Do:')+'A menu that keeps showing "1) Say hello 2) Show time-table of 5 0) Exit" until the user picks 0.'],
+  [K('Learn:')+L('for-statements','For statements')+'.',
+   K('Do:')+'Print the multiplication table of a number the user types. Then calculate the factorial of n.'],
+  [K('Learn:')+L('break-and-continue','Break and continue')+'.',
+   K('Do:')+'FizzBuzz from 1 to 100. Then: find the first number above the user\'s input that is divisible by both 7 and 11.'],
+  [K('Learn:')+'Nested loops: re-read the nested loop example in the "For statements" lesson.',
+   K('Do:')+'Print a right triangle of * with n rows. Then print a hollow square of * of size n.'],
+  [K('Mini project:')+'Number guessing game. The computer picks a number from 1 to 100 (use <code>std::srand(std::time(nullptr))</code> once, then <code>std::rand() % 100 + 1</code>). The user guesses; print "higher" or "lower" and count the guesses.',
+   K('Practice:')+HR+' → "For Loop".'],
+  [K('Month 1 test (no notes, 60 min):')+'(1) From a blank file: read marks of 5 students in a loop, print each grade, then the class average. (2) Convert 45 to binary on paper. (3) Explain RAM vs storage.',
+   K('Decide:')+'All three done? Go to November. If not, spend this Sunday and next Saturday redoing the weak part.']
+ ]},
 
-{id:'w5',m:'nov',s:'2026-11-02',e:'2026-11-08',t:'Logic and truth tables',
- learn:[
-  'Discrete Structures — Rosen\'s <i>Discrete Mathematics and Its Applications</i> (your likely course book), sections <b>1.1, 1.2, 1.3</b>: propositions, AND/OR/NOT, implication, biconditional, truth tables, logical equivalence. For video help, search YouTube "Neso Academy propositional logic".',
-  'learncpp.com <b>Chapter 5</b> (Constants and Strings) — focus on std::string lessons.'
- ],
- practice:[
-  'Make truth tables on paper for: p → q, p ↔ q, ¬(p ∧ q), and (p → q) ∧ (q → p).',
-  'Prove ¬(p ∨ q) ≡ ¬p ∧ ¬q (De Morgan) using a truth table.',
-  'C++: write a program that prints the truth table of p AND q, p OR q, and p → q using nested loops over true/false.',
-  'C++: ask for the user\'s full name and print it in reverse and its length.'
- ],
- check:['You can make a truth table for any 3-variable statement and tell if it\'s a tautology.']},
+/* ===== NOVEMBER ===== */
+{id:'w5',m:'nov',s:'2026-11-02',t:'Logic and truth tables + C++ functions',
+ goal:'By Sunday you can build truth tables, prove two statements are equivalent, and split C++ programs into functions.',
+ why:'Logic is the first chapter of Discrete Structures, and it is the same logic as AND/OR gates in Digital Logic Design next month.',
+ days:[
+  [K('Discrete (60 min):')+'Rosen 1.1: propositions, ¬ ∧ ∨ ⊕ → ↔. Video help: '+YT('Neso Academy propositional logic')+'. Then do odd exercises 1–15 of 1.1 and check the answers at the back.',
+   K('C++ (30 min):')+L('introduction-to-functions','Introduction to functions')+'.'],
+  [K('Discrete:')+'Rosen 1.1, truth tables of compound statements. Make truth tables for p → q and ¬p ∨ q. Notice they are the same.',
+   K('C++:')+L('function-return-values-value-returning-functions','Function return values')+' and '+L('void-functions-non-value-returning-functions','Void functions')+'. Write square(x).'],
+  [K('Discrete:')+'Rosen 1.2: translating English sentences into logic. Translate 5 sentences from the exercises.',
+   K('C++:')+L('introduction-to-function-parameters-and-arguments','Function parameters and arguments')+'. Write add(a, b) and maxOf(a, b).'],
+  [K('Discrete:')+'Rosen 1.3: logical equivalences and De Morgan\'s laws. Copy the table of equivalence laws into your notebook. Show ¬(p → q) ≡ p ∧ ¬q using the laws.',
+   K('C++:')+L('introduction-to-local-scope','Introduction to local scope')+' and '+L('why-functions-are-useful-and-how-to-use-them-effectively','Why functions are useful')+'.'],
+  [K('Discrete:')+'Rosen 1.3: tautologies and contradictions. Check 3 statements from the exercises.',
+   K('C++:')+L('forward-declarations','Forward declarations and definitions')+'. Rewrite your Week 3 grade calculator with a function <code>char grade(int marks)</code>.'],
+  [K('Bridge project:')+'A C++ program that prints the truth table of p, q, p&&q, p||q and p→q (written as !p||q), using two loops over false/true.',
+   K('Practice:')+HR+' → "Functions".'],
+  [K('Self-test (no notes):')+'Write both De Morgan\'s laws, and the equivalence for p → q.',
+   K('Review:')+'Redo Week 4 FizzBuzz, this time inside a function.']
+ ]},
 
-{id:'w6',m:'nov',s:'2026-11-09',e:'2026-11-15',t:'Quantifiers, inference + arrays',
- learn:[
-  'Rosen sections <b>1.4, 1.5, 1.6</b>: predicates, ∀ and ∃, nested quantifiers, rules of inference (modus ponens, modus tollens, etc.).',
-  'learncpp.com <b>Chapter 16</b> (Dynamic arrays: std::vector) — lessons 16.1 to 16.6 are enough.'
- ],
- practice:[
-  'Translate 5 English sentences into logic with quantifiers, e.g. "Every student in this class has a laptop".',
-  'C++: store 10 marks in an array; print max, min and average.',
-  'C++: reverse an array, and do a linear search for a number the user enters.',
-  'HackerRank C++ Introduction: "Arrays Introduction" and "Variable Sized Arrays".'
- ],
- check:['You can write the negation of "∀x ∃y P(x, y)" correctly.']},
+{id:'w6',m:'nov',s:'2026-11-09',t:'Quantifiers and inference + debugging and arrays',
+ goal:'By Sunday you can work with ∀ and ∃, build a logical argument, debug a program step by step, and process data stored in arrays.',
+ why:'Proof rules are used in every Discrete Structures exam. Arrays are the first real data structure and lead to the Data Structures course in Semester 4.',
+ days:[
+  [K('Discrete:')+'Rosen 1.4: predicates and quantifiers. Odd exercises 1–15.',
+   K('C++:')+L('a-strategy-for-debugging','A strategy for debugging')+' and '+L('basic-debugging-tactics','Basic debugging tactics')+'.'],
+  [K('Discrete:')+'Rosen 1.4: negating quantifiers. Negate 5 statements from the exercises.',
+   K('C++:')+L('using-an-integrated-debugger-stepping','Using an integrated debugger: Stepping')+'. In Code::Blocks (Debug menu), step through your factorial program and watch the variables change.'],
+  [K('Discrete:')+'Rosen 1.5: nested quantifiers (first half only). Translate "Every student has a friend in the class."',
+   K('C++:')+LS('C-style arrays','Introduction to C-style arrays')+' (open the lesson with this title). Store 5 numbers and print them in reverse.'],
+  [K('Discrete:')+'Rosen 1.6: rules of inference (modus ponens, modus tollens, hypothetical and disjunctive syllogism). Odd exercises 1–9.',
+   K('C++:')+'Store 10 marks in an array and print the max, min and average.'],
+  [K('Discrete:')+'Rosen 1.6: building arguments step by step. Do 2 argument exercises.',
+   K('C++:')+'Linear search: the user enters a number; print its position in the array or "not found".'],
+  [K('Practice:')+'Count even and odd numbers in an array. Find the second largest element.',
+   K('Practice:')+HR+' → "Arrays Introduction".'],
+  [K('Self-test (no notes):')+'Write the 4 main rules of inference with an example of each.',
+   K('Review:')+'Redo the Week 5 truth-table program without looking at it.']
+ ]},
 
-{id:'w7',m:'nov',s:'2026-11-16',e:'2026-11-22',t:'Proofs, sets + references and pointers',
- learn:[
-  'Rosen sections <b>1.7, 1.8</b> (direct proof, contrapositive, contradiction) and <b>2.1, 2.2</b> (sets, set operations, Venn diagrams).',
-  'learncpp.com <b>Chapter 12</b> (Compound Types: References and Pointers) — all lessons. Go slowly, this is the hardest topic so far.'
- ],
- practice:[
-  'Prove: "If n is odd, then n² is odd" (direct proof). Prove "√2 is irrational" by following the book\'s contradiction proof in your own words.',
-  'For A = {1,2,3,4}, B = {3,4,5}: find A∪B, A∩B, A−B, and the power set of B.',
-  'C++: write swap() twice — once using references and once using pointers.',
-  'C++: find the union and intersection of two arrays.'
- ],
- check:['You can explain what <code>int* p = &x;</code> and <code>*p = 5;</code> do.']},
+{id:'w7',m:'nov',s:'2026-11-16',t:'Proofs and sets + references and pointers',
+ goal:'By Sunday you can write simple proofs, work with sets, and explain what references and pointers do.',
+ why:'Pointers are the hardest topic in Programming Fundamentals, and understanding memory is essential for security later (memory bugs are a common attack target).',
+ days:[
+  [K('Discrete:')+'Rosen 1.7: direct proof. Prove: the sum of two even numbers is even; if n is odd, n² is odd.',
+   K('C++:')+L('lvalue-references','Lvalue references')+'.'],
+  [K('Discrete:')+'Rosen 1.7: proof by contrapositive and by contradiction. Prove: if n² is even, then n is even.',
+   K('C++:')+L('pass-by-lvalue-reference','Pass by lvalue reference')+'. Write swap(a, b) using references.'],
+  [K('Discrete:')+'Rosen 2.1: sets, subsets, power set, Cartesian product. For B = {3, 4, 5} write the power set; for A = {1, 2} write A × B.',
+   K('C++:')+L('introduction-to-pointers','Introduction to pointers')+'. Print the address of a variable, then change its value through a pointer. Go slowly here.'],
+  [K('Discrete:')+'Rosen 2.2: set operations and Venn diagrams. For A = {1,2,3,4}, B = {3,4,5}: A∪B, A∩B, A−B.',
+   K('C++:')+L('null-pointers','Null pointers')+' and '+L('pass-by-address','Pass by address')+'. Write swap again, this time with pointers.'],
+  [K('Discrete:')+'Rosen 2.2: prove one set identity (e.g. De Morgan for sets) with a membership table.',
+   K('C++:')+'Print the union and the intersection of two arrays.'],
+  [K('Practice:')+'Rosen 1.7: pick 3 odd exercises and write full proofs.',
+   K('Practice:')+'C++: one function that finds both the min and max of an array and returns them through two reference parameters.'],
+  [K('Self-test (no notes):')+'Explain what <code>int* p = &x;</code> and <code>*p = 5;</code> do, and the difference between & in a declaration and & in an expression.',
+   K('Review:')+'Redo the Week 6 linear search as a function.']
+ ]},
 
-{id:'w8',m:'nov',s:'2026-11-23',e:'2026-11-29',t:'Functions, relations, counting + mini project',
- learn:[
-  'Rosen sections <b>2.3</b> (functions: one-to-one, onto), <b>5.1</b> (induction), <b>6.1–6.3</b> (counting, pigeonhole, permutations and combinations), <b>9.1</b> (relations and their properties).',
-  'learncpp.com <b>Chapter 13</b> — only the lessons about structs.'
- ],
- practice:[
-  'Prove by induction: 1 + 2 + … + n = n(n+1)/2.',
-  'Solve 5 counting problems from the exercises at the end of Rosen 6.3.',
-  'Mini project: Student Record program with a struct (name, roll no, marks). Menu: 1) Add student 2) Show all 3) Show class average 4) Exit.'
- ],
- check:['Your Student Record program works without crashing for 5 students.']},
+{id:'w8',m:'nov',s:'2026-11-23',t:'Functions, induction, counting, relations + structs',
+ goal:'By Sunday you can prove a formula by induction, count possibilities, check properties of relations, and build a complete menu program with structs.',
+ why:'Counting tells you how strong a password is (security). Structs are how real programs group data, the step before classes.',
+ days:[
+  [K('Discrete:')+'Rosen 2.3: functions (domain, codomain, one-to-one, onto, bijection). Classify 5 functions from the exercises.',
+   K('C++:')+L('introduction-to-structs-members-and-member-selection','Introduction to structs')+'.'],
+  [K('Discrete:')+'Rosen 5.1: mathematical induction. Prove 1 + 2 + … + n = n(n+1)/2 and 1 + 3 + … + (2n−1) = n².',
+   K('C++:')+L('struct-passing-and-miscellany','Struct passing')+'. Make struct Student {name, roll, marks} and print one student with a function.'],
+  [K('Discrete:')+'Rosen 6.1: the product and sum rules. How many 8-character passwords can be made from lowercase letters and digits?',
+   K('C++:')+'An array of 5 Students: read all of them, then print all of them.'],
+  [K('Discrete:')+'Rosen 6.3: permutations and combinations. 5 odd exercises.',
+   K('C++:')+'Functions nPr(n, r) and nCr(n, r) that use your factorial function. Check them against your Rosen answers.'],
+  [K('Discrete:')+'Rosen 9.1: relations and their properties (reflexive, symmetric, transitive). Check 3 relations on {1, 2, 3}.',
+   K('C++:')+'Plan Saturday\'s project on paper: which functions you need and what each one does.'],
+  [K('Mini project:')+'Student Record program. Menu: 1) Add student 2) Show all 3) Search by roll number 4) Class average 5) Topper 0) Exit. Use an array of structs and one function per menu option.'],
+  [K('Month 2 test (no notes, 90 min):')+'(1) Prove an equivalence with a truth table and with the laws. (2) Prove 2ⁿ > n by induction. (3) Run your Student Record program with 5 students and explain each function out loud.',
+   K('Decide:')+'Pass all three before starting December.']
+ ]},
 
-{id:'w9',m:'dec',s:'2026-11-30',e:'2026-12-06',t:'Number systems',
- learn:[
-  'Search YouTube "Neso Academy Digital Electronics" and open their Digital Electronics playlist. Watch only the Number Systems videos: decimal, binary, octal, hexadecimal, conversions, 1\'s and 2\'s complement, binary addition and subtraction.'
- ],
- practice:[
-  'Convert by hand: 156 to binary, octal and hex; 0x3F to decimal; 101101 to hex.',
-  'Find the 8-bit 2\'s complement of −25. Do 7 − 12 in binary using 2\'s complement.',
-  'C++: decimal-to-binary converter (use % 2 and / 2 in a loop).',
-  'C++: binary-to-decimal converter.'
- ],
- check:['You can convert between all four bases without a calculator.']},
+/* ===== DECEMBER ===== */
+{id:'w9',m:'dec',s:'2026-11-30',t:'Number systems',
+ goal:'By Sunday you can convert between decimal, binary, octal and hex, add in binary, and represent negative numbers.',
+ why:'This is the first chapter of Digital Logic Design. You already met binary in Week 1; now you master it.',
+ days:[
+  [K('DLD (60 min):')+YT('Neso Academy number systems introduction')+' and decimal to binary conversion. Convert 25, 100 and 255 to binary.',
+   K('C++ (30 min):')+'A decimal-to-binary converter using % 2 and / 2 in a loop.'],
+  [K('DLD:')+YT('Neso Academy octal and hexadecimal conversion')+'. Convert 156 to binary, octal and hex; 0x3F to decimal; 101101 to hex by grouping bits.',
+   K('C++:')+'A binary-to-decimal converter (read the binary number as a string).'],
+  [K('DLD:')+YT('Neso Academy binary addition and subtraction')+'. Do 5 additions and check them in decimal.',
+   R(0)],
+  [K('DLD:')+YT('Neso Academy 1s and 2s complement')+'. Find the 8-bit 2\'s complement of −25. Compute 7 − 12 using 2\'s complement.',
+   K('C++ (30 min):')+'Print sizeof(int) and INT_MAX (from &lt;climits&gt;). Add 1 to INT_MAX and print the result. Connect it to what you learned today.'],
+  [K('DLD:')+YT('Neso Academy BCD code')+' and '+YT('Neso Academy gray code')+'. Write 47 in BCD and the Gray code for 0 to 7.',
+   R(1)],
+  [K('Practice:')+'Make up 15 mixed conversion problems, solve them, and check with Windows Calculator in Programmer mode.',
+   K('Practice:')+'Combine your converters into one menu program.'],
+  [K('Self-test (no notes, no calculator):')+'Five conversions in under 10 minutes.',
+   K('Review:')+'Redo the Week 7 pointer swap from memory.']
+ ]},
 
-{id:'w10',m:'dec',s:'2026-12-07',e:'2026-12-13',t:'Logic gates and Boolean algebra',
- learn:[
-  'Neso Academy playlist: Logic Gates videos (AND, OR, NOT, NAND, NOR, XOR, XNOR, universal gates), then Boolean Algebra videos (laws, De Morgan\'s theorem).',
-  '<a href="https://www.nand2tetris.org" target="_blank" rel="noopener">nand2tetris.org</a> → open Project 1 (Boolean Logic). Read the Chapter 1 PDF linked there.'
- ],
- practice:[
-  'nand2tetris Project 1, using the online IDE on their site: build <b>Not, And, Or, Xor, Mux, DMux</b> only (skip the 16-bit ones for now).',
-  'Simplify with Boolean laws: AB + AB\' , (A + B)(A + B\'), A + A\'B.',
-  'Show that NAND alone can make NOT, AND and OR (draw it).'
- ],
- check:['All 6 chips pass the tests in the nand2tetris simulator.']},
+{id:'w10',m:'dec',s:'2026-12-07',t:'Logic gates and Boolean algebra',
+ goal:'By Sunday you can draw all logic gates with their truth tables, simplify expressions with Boolean laws, and build gates in a simulator.',
+ why:'Gates are November\'s logic, now built in hardware. Notice how much you already know.',
+ days:[
+  [K('DLD:')+YT('Neso Academy logic gates')+': AND, OR, NOT. Draw each symbol with its truth table. Compare with your Week 5 truth tables.',
+   R(2)],
+  [K('DLD:')+YT('Neso Academy universal gates NAND NOR')+' and XOR/XNOR. Draw how NOT, AND and OR are built from NAND only.',
+   K('Setup:')+'Open '+N2T+' → Project 1. Read the Project 1 page and the start of Chapter 1, and open the hardware simulator it links to.'],
+  [K('DLD:')+YT('Neso Academy boolean algebra laws')+'. Simplify AB + AB\', (A + B)(A + B\') and A + A\'B.',
+   K('Build:')+'nand2tetris: Not, And, Or.'],
+  [K('DLD:')+YT('Neso Academy De Morgan theorem')+'. Simplify (A + B)\' · (A\' + B)\'.',
+   K('Build:')+'nand2tetris: Xor.'],
+  [K('DLD:')+'Re-watch any Boolean law you found hard and redo its examples.',
+   K('Build:')+'nand2tetris: Mux and DMux.'],
+  [K('Practice:')+'8 Boolean simplification problems from the Neso examples (pause the video before the answer).',
+   K('C++:')+'A program that prints the truth table of a 3-variable expression such as (A && B) || !C, using three nested loops.'],
+  [K('Self-test (no notes):')+'Truth tables of all 7 gates and both forms of De Morgan\'s theorem.',
+   K('Check:')+'All 6 nand2tetris chips pass their tests.']
+ ]},
 
-{id:'w11',m:'dec',s:'2026-12-14',e:'2026-12-20',t:'K-maps, SOP and POS',
- learn:[
-  'Neso Academy playlist: SOP and POS forms, minterms and maxterms, then all Karnaugh Map videos (2, 3 and 4 variables, don\'t-care conditions).'
- ],
- practice:[
-  'Solve 10 K-map problems: 3 with 3 variables, 5 with 4 variables, 2 with don\'t-cares. Check each answer by making a truth table.',
-  'Write the SOP expression from any truth table you invent, then simplify it with a K-map.'
- ],
- check:['You can simplify F(A,B,C,D) = Σm(0,2,5,7,8,10,13,15) with a K-map.']},
+{id:'w11',m:'dec',s:'2026-12-14',t:'SOP, POS and Karnaugh maps',
+ goal:'By Sunday you can turn any truth table into a simplified circuit using K-maps.',
+ why:'K-maps are the most tested topic in Digital Logic Design exams.',
+ days:[
+  [K('DLD:')+YT('Neso Academy minterms and maxterms')+' and SOP/POS forms. Write the SOP and POS of 3 truth tables you make up.',
+   R(3)],
+  [K('DLD:')+YT('Neso Academy K map 3 variable')+'. Solve 5 problems.',
+   R(4)],
+  [K('DLD:')+YT('Neso Academy K map 4 variable')+'. Solve 5 problems.',
+   R(5)],
+  [K('DLD:')+YT('Neso Academy K map dont care')+'. Solve 3 problems.',
+   R(6)],
+  [K('DLD:')+'Simplify F(A,B,C,D) = Σm(0,2,5,7,8,10,13,15). Check your answer with a truth table.',
+   R(7)],
+  [K('Practice:')+'10 mixed K-map problems. Check 2 of them with your Week 10 C++ truth-table program.'],
+  [K('Self-test:')+'One 4-variable K-map in under 10 minutes. Explain why neighbouring cells differ by only one bit (think Gray code, Week 9).',
+   K('Review:')+'Redo the Week 8 nCr function from memory.']
+ ]},
 
-{id:'w12',m:'dec',s:'2026-12-21',e:'2026-12-27',t:'Combinational circuits',
- learn:[
-  'Neso Academy playlist: Half Adder, Full Adder, Half/Full Subtractor, Multiplexer, Demultiplexer, Decoder, Encoder.',
-  'nand2tetris → Project 2 (Boolean Arithmetic): read the Chapter 2 PDF.'
- ],
- practice:[
-  'nand2tetris Project 2: build <b>HalfAdder, FullAdder, Add16, Inc16</b>. The ALU is optional (hard but great practice).',
-  'Draw a 4-to-1 multiplexer and a 2-to-4 decoder from gates.'
- ],
- check:['You can draw a full adder from memory and explain its truth table.']},
+{id:'w12',m:'dec',s:'2026-12-21',t:'Combinational circuits',
+ goal:'By Sunday you can design adders, multiplexers and decoders, and build an adder in the simulator.',
+ why:'These are the building blocks of a CPU, which you will study in Computer Organization & Assembly Language (Semester 3).',
+ days:[
+  [K('DLD:')+YT('Neso Academy half adder and full adder')+'. Derive the full adder equations from its truth table using a K-map.',
+   K('Setup:')+'nand2tetris → Project 2. Read the Project 2 page and the start of Chapter 2.'],
+  [K('Build:')+'nand2tetris: HalfAdder and FullAdder.',
+   R(8)],
+  [K('DLD:')+YT('Neso Academy half and full subtractor')+'.',
+   K('Build:')+'nand2tetris: Add16 and Inc16.'],
+  [K('DLD:')+YT('Neso Academy multiplexer')+' and demultiplexer. Implement F = Σm(1,2,6,7) using an 8-to-1 multiplexer.',
+   R(9)],
+  [K('DLD:')+YT('Neso Academy decoder')+' and encoder. Draw a 2-to-4 decoder from gates.'],
+  [K('Challenge (optional):')+'nand2tetris ALU. It is hard but shows how a CPU calculates.',
+   K('Or:')+'Redraw today\'s circuits from memory.'],
+  [K('Self-test (no notes):')+'Draw a full adder and explain its truth table.',
+   K('Review:')+'Redo the Week 9 2\'s complement problems.']
+ ]},
 
-{id:'w13',m:'dec',s:'2026-12-28',e:'2027-01-03',t:'Review week + flip-flops intro',
- learn:[
-  'Neso Academy playlist: only the first videos on Sequential Circuits — latches and SR, D, JK flip-flops.',
-  'Go back over any week where you didn\'t pass the "Done when" check.'
- ],
- practice:[
-  'Redo the Week 8 Student Record program from memory, then add "search by roll no".',
-  'Make a one-page summary sheet for Discrete Structures and one for DLD (formulas, laws, rules). Keep them for the semester.'
- ],
- check:['Both summary sheets are written, by hand or on your computer.']},
+{id:'w13',m:'dec',s:'2026-12-28',t:'Buffer week: catch up and consolidate',
+ goal:'By Sunday nothing from October to December is left unfinished, and you have summary sheets for the semester.',
+ why:'Everyone falls behind somewhere. This week exists so you can catch up without stress.',
+ days:[
+  [K('Catch-up:')+'Scroll up and finish any unticked tasks from November.'],
+  [K('Catch-up:')+'Finish any unticked tasks from December.'],
+  [K('Preview:')+YT('Neso Academy SR latch')+' and the D flip-flop. Just understand the idea: a circuit that remembers 1 bit.'],
+  [K('Summary sheet:')+'One page for Discrete Structures: logic laws, rules of inference, proof methods, set laws, counting formulas.'],
+  [K('Summary sheet:')+'One page for DLD: conversions, 2\'s complement, gate tables, Boolean laws, K-map rules, adder equations.'],
+  [K('C++ project:')+'Student Record v2: add "delete student" and "sort by marks" (use your bubble sort).'],
+  [K('Month 3 test (no notes, 90 min):')+'(1) A 4-variable K-map. (2) Draw a full adder. (3) 9 − 14 in 8-bit 2\'s complement. (4) From a blank file, print all primes from 1 to 100 in under 15 minutes.']
+ ]},
 
-{id:'w14',m:'jan',s:'2027-01-04',e:'2027-01-10',t:'Linux command line',
- learn:[
-  'TryHackMe rooms, in order: <b>Linux Fundamentals Part 1</b>, <b>Part 2</b>, <b>Part 3</b>. Use the in-browser machine the room gives you — no install needed.'
- ],
- practice:[
-  '<a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener">OverTheWire Bandit</a>: levels 0 → 5. Read each level\'s page on their site before trying. Note every password in a text file.',
-  'Memorise: <code>ls</code> <code>cd</code> <code>pwd</code> <code>cat</code> <code>find</code> <code>grep</code> <code>chmod</code> <code>ssh</code> <code>man</code>.'
- ],
- check:['You finished Bandit level 5 without looking up solutions.']},
+/* ===== JANUARY ===== */
+{id:'w14',m:'jan',s:'2027-01-04',t:'The Linux command line',
+ goal:'By Sunday you can move around, read, search and change files in Linux using only the keyboard.',
+ why:'Almost every security tool runs on Linux. This prepares you for Operating Systems and all security courses.',
+ days:[
+  [K('Learn:')+'TryHackMe (sign up free): '+THM('Linux Fundamentals Part 1')+'. Use the in-browser machine it gives you.',
+   K('Notebook:')+'Every command you learned, with a one-line meaning.'],
+  [K('Learn:')+THM('Linux Fundamentals Part 2')+'.'],
+  [K('Learn:')+THM('Linux Fundamentals Part 3')+'.'],
+  [K('Play:')+BANDIT+' levels 0 → 2. Read each level\'s page fully before trying. Save every password in a text file.'],
+  [K('Play:')+'Bandit levels 3 → 5 (hidden files, finding files).'],
+  [K('Play:')+'Bandit levels 6 → 7 (find by size and owner, grep).',
+   K('C++ (30 min):')+'Redo any Month 3 test question you found hard.'],
+  [K('Self-test (no notes):')+'Write the commands to: list hidden files, go up one folder, search for text in a file, find a file by name, and change permissions.',
+   K('Review:')+'Redo one Bandit level from the start without notes.']
+ ]},
 
-{id:'w15',m:'jan',s:'2027-01-11',e:'2027-01-17',t:'Networking basics',
- learn:[
-  'TryHackMe rooms, in order: <b>What is Networking?</b>, <b>Intro to LAN</b>, <b>OSI Model</b>, <b>Packets &amp; Frames</b>, <b>Extending Your Network</b>. Search each name in TryHackMe\'s search bar.'
- ],
- practice:[
-  'Draw the 7 OSI layers and write one protocol or device for each.',
-  'On your PC, run <code>ipconfig</code> (Windows) and find your IP address, subnet mask and default gateway. Then run <code>ping google.com</code> and <code>tracert google.com</code>.',
-  'Bandit levels 6 → 10.'
- ],
- check:['You can explain what happens between typing a URL and a page loading, in 5 steps.']},
+{id:'w15',m:'jan',s:'2027-01-11',t:'How networks work',
+ goal:'By Sunday you can explain the OSI model, IP addresses, TCP vs UDP and common ports.',
+ why:'Computer Networks comes in Semester 3, and Network Security later builds on it.',
+ days:[
+  [K('Learn:')+THM('What is Networking?')+'.',
+   K('Do:')+'Run <code>ipconfig</code> (Windows) and find your IP address, subnet mask and default gateway.'],
+  [K('Learn:')+THM('Intro to LAN')+'.',
+   K('Do:')+'Draw your home network: router, phones, laptop, and how they connect.'],
+  [K('Learn:')+THM('OSI Model')+'.',
+   K('Do:')+'Make a table of the 7 layers with one protocol or device for each.'],
+  [K('Learn:')+THM('Packets & Frames')+'.',
+   K('Do:')+'Draw the TCP three-way handshake. Write 3 differences between TCP and UDP.'],
+  [K('Learn:')+THM('Extending Your Network')+'.',
+   K('Do:')+'Memorise these ports: 21, 22, 23, 25, 53, 80, 110, 143, 443, 3389, and what uses each.'],
+  [K('Practice:')+'Run <code>ping google.com</code> and <code>tracert google.com</code>. Explain each line of the output.',
+   K('Play:')+'Bandit levels 8 → 10.'],
+  [K('Self-test (no notes):')+'The 7 OSI layers in order, TCP vs UDP, and the 10 ports.']
+ ]},
 
-{id:'w16',m:'jan',s:'2027-01-18',e:'2027-01-24',t:'Web and security basics',
- learn:[
-  'TryHackMe rooms, in order: <b>DNS in Detail</b>, <b>HTTP in Detail</b>, <b>How Websites Work</b>, <b>Intro to Offensive Security</b>, <b>Intro to Defensive Security</b>.',
-  'Learn these terms well: CIA triad (Confidentiality, Integrity, Availability), phishing, malware, ransomware, brute force, 2FA, encryption vs hashing.'
- ],
- practice:[
-  'Bandit levels 11 → 15.',
-  'Turn on 2FA for your email and social accounts.',
-  'Write one paragraph for each CIA triad pillar with a real-life example of it being attacked.'
- ],
- check:['You can explain the difference between encryption and hashing to a friend.']},
+{id:'w16',m:'jan',s:'2027-01-18',t:'The web and security basics',
+ goal:'By Sunday you can explain what happens when you open a website, and the core ideas of security.',
+ why:'This is a preview of Information Security (Semester 4) and gives meaning to everything you learned so far.',
+ days:[
+  [K('Learn:')+THM('DNS in Detail')+'.',
+   K('Do:')+'Run <code>nslookup google.com</code> and find the IP address.'],
+  [K('Learn:')+THM('HTTP in Detail')+'.',
+   K('Do:')+'Open your browser\'s DevTools (F12) → Network tab, reload a page, and find three status codes.'],
+  [K('Learn:')+THM('How Websites Work')+'.'],
+  [K('Learn:')+THM('Intro to Defensive Security')+' and '+THM('Intro to Offensive Security')+'.',
+   K('Do:')+'Write the CIA triad (Confidentiality, Integrity, Availability) with a real-life attack example for each.'],
+  [K('Learn:')+'Search and read about: encryption vs hashing, phishing, and brute-force attacks.',
+   K('Do:')+'Use Week 8 counting to compare: 8 lowercase letters vs 12 characters of letters, digits and symbols. Then turn on 2FA for your email.'],
+  [K('Play:')+'Bandit levels 11 → 15.'],
+  [K('Self-test:')+'Rewrite your Week 1 explanation of "what happens when you open a website". Compare the two and see how much you have learned.']
+ ]},
 
-{id:'w17',m:'jan',s:'2027-01-25',e:'2027-01-31',t:'OOP preview + final review',
- learn:[
-  'learncpp.com <b>Chapter 14</b> (Introduction to Classes) — lessons 14.1 to 14.9.'
- ],
- practice:[
-  'Rewrite the Student Record program using a class instead of a struct.',
-  'BankAccount class: deposit(), withdraw() (block if balance too low), showBalance().',
-  'Final check: open every week above and redo one "Done when" task from each month.'
- ],
- check:['You feel ready for Semester 1. Good luck! 🎓']}
+{id:'w17',m:'jan',s:'2027-01-25',t:'First steps in OOP + final review',
+ goal:'By Sunday you can write simple C++ classes and you are ready for Semester 1.',
+ why:'Object Oriented Programming (Semester 3) builds directly on Programming Fundamentals. A small head start makes it much easier.',
+ days:[
+  [K('Learn:')+LS('Introduction to object-oriented programming','Introduction to object-oriented programming')+' and the lesson on classes and class members.'],
+  [K('Learn:')+LS('Public and private members','Public and private members and access specifiers')+'.',
+   K('Do:')+'A Rectangle class with private length and width, and public functions for area and perimeter.'],
+  [K('Learn:')+LS('Introduction to constructors','Introduction to constructors')+'.',
+   K('Do:')+'Add a constructor to Rectangle.'],
+  [K('Do:')+'A BankAccount class with deposit(), withdraw() (refuse if the balance is too low) and showBalance().'],
+  [K('Do:')+'Student Record v3: rewrite it using a Student class instead of a struct.'],
+  [K('Final test (no notes, 2 hours):')+'Pick one question from each month test (Oct, Nov, Dec) and one Bandit level you haven\'t done. Do them all.'],
+  [K('Prepare:')+'Put your summary sheets and notebook in your bag for the first week of class. Rest. You\'re ready. 🎓']
+ ]}
 ];
 
-const KEY = 'uol-cyber-prep-v1';
+/* ---------- state ---------- */
+const KEY = 'uol-cyber-prep-v2';
 let state = {};
 try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { state = {}; }
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
 
-const fmt = d => new Date(d+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+const DAYN = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const DAYTYPE = ['','','','','','Practice day','Review day'];
+const d0 = s => new Date(s+'T00:00:00');
+const addDays = (d,n) => { const x = new Date(d); x.setDate(x.getDate()+n); return x; };
+const short = d => d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
 const today = new Date(); today.setHours(0,0,0,0);
-const isNow = w => today >= new Date(w.s+'T00:00:00') && today <= new Date(w.e+'T00:00:00');
 
-function taskList(w, key, items){
-  return '<ul class="tasks">' + items.map((txt,i)=>{
-    const id = w.id+'-'+key+i;
-    return '<li><input type="checkbox" id="'+id+'" data-id="'+id+'" '+(state[id]?'checked':'')+'><label for="'+id+'">'+txt+'</label></li>';
-  }).join('') + '</ul>';
+function weekEnd(w){ return w.flat ? addDays(d0(w.s),4) : addDays(d0(w.s),6); }
+function isNow(w){ return today >= d0(w.s) && today <= weekEnd(w); }
+function ids(w){ const a=[]; w.days.forEach((d,i)=>d.forEach((_,j)=>a.push(w.id+'-'+i+'-'+j))); return a; }
+
+function renderTasks(w, di, items){
+  return '<ul class="tasks">'+items.map((txt,j)=>{
+    const id = w.id+'-'+di+'-'+j;
+    return '<li><input type="checkbox" id="'+id+'" data-id="'+id+'"'+(state[id]?' checked':'')+'><label for="'+id+'">'+txt+'</label></li>';
+  }).join('')+'</ul>';
 }
-function allIds(w){ const a=[]; ['learn','practice','check'].forEach(k=>w[k].forEach((_,i)=>a.push(w.id+'-'+k+i))); return a; }
 
 function render(){
   const plan = document.getElementById('plan');
   plan.innerHTML = MONTHS.map(m=>{
     const weeks = WEEKS.filter(w=>w.m===m.id);
-    return '<section class="month" data-month="'+m.id+'"><h2>'+m.name+'</h2><p class="sub">'+m.sub+'</p><div class="timeline">'+
-      weeks.map(w=>{
+    return '<section class="month" data-month="'+m.id+'"><h2>'+m.name+'</h2><p class="sub">'+m.sub+'</p>'+
+      '<div class="outcomes"><b>By the end of this '+(m.id==='setup'?'step':'month')+' you can:</b><ul>'+m.out.map(o=>'<li>'+o+'</li>').join('')+'</ul></div>'+
+      '<div class="timeline">'+weeks.map(w=>{
         const now = isNow(w);
-        const label = w.id==='w0' ? 'Setup' : 'Week '+w.id.slice(1);
-        return '<article class="week'+(now?' now':'')+'" data-week="'+w.id+'"><details'+(now?' open':'')+'><summary>'+
-          '<span class="wk-date">'+label+', '+fmt(w.s)+' – '+fmt(w.e)+(now?'<span class="now-tag">This week</span>':'')+'</span>'+
-          '<span class="wk-title">'+w.t+'</span><span class="wk-count"></span></summary><div class="body">'+
-          '<h3>Learn</h3>'+taskList(w,'learn',w.learn)+
-          '<h3>Practice</h3>'+taskList(w,'practice',w.practice)+
-          '<h3>Done when</h3>'+taskList(w,'check',w.check)+
+        const label = w.flat ? 'Setup' : 'Week '+w.id.slice(1);
+        const days = w.days.map((items,i)=>{
+          const date = addDays(d0(w.s), i);
+          const isToday = !w.flat && +date === +today;
+          const name = w.flat ? 'Any day' : DAYN[i];
+          const sub = w.flat ? short(d0(w.s))+' – '+short(weekEnd(w)) : short(date)+(DAYTYPE[i]?' · '+DAYTYPE[i]:'');
+          return '<div class="day'+(isToday?' today':'')+'"'+(isToday?' id="today"':'')+'><div class="dname">'+name+(isToday?'<span class="tag">Today</span>':'')+'<small>'+sub+'</small></div>'+renderTasks(w,i,items)+'</div>';
+        }).join('');
+        return '<article class="week'+(now?' now':'')+'" data-week="'+w.id+'" id="'+w.id+'"><details'+(now?' open':'')+'><summary>'+
+          '<span class="wk-date">'+label+', '+short(d0(w.s))+' – '+short(weekEnd(w))+(now?'<span class="tag">This week</span>':'')+'</span>'+
+          '<span class="wk-title">'+w.t+'</span><span class="wk-count"></span></summary><div class="wbody">'+
+          '<p class="goal"><b>Goal:</b> '+w.goal+'</p><p class="why">Why it matters: '+w.why+'</p>'+days+
           '</div></details></article>';
-      }).join('') + '</div></section>';
+      }).join('')+'</div></section>';
   }).join('');
   plan.addEventListener('change', e=>{
     if(e.target.matches('input[type=checkbox]')){ state[e.target.dataset.id] = e.target.checked; save(); update(); }
@@ -388,11 +578,11 @@ function render(){
 function update(){
   let total=0, done=0;
   WEEKS.forEach(w=>{
-    const ids = allIds(w); const d = ids.filter(id=>state[id]).length;
-    total+=ids.length; done+=d;
+    const a = ids(w), d = a.filter(id=>state[id]).length;
+    total+=a.length; done+=d;
     const el = document.querySelector('[data-week="'+w.id+'"]');
-    el.querySelector('.wk-count').textContent = d+'/'+ids.length;
-    el.classList.toggle('complete', d===ids.length);
+    el.querySelector('.wk-count').textContent = d+'/'+a.length;
+    el.classList.toggle('complete', d===a.length);
   });
   const p = Math.round(done/total*100);
   document.getElementById('pct').textContent = p+'%';
@@ -403,18 +593,34 @@ function update(){
 
 function tabs(){
   const nav = document.getElementById('tabs');
-  const opts = [{id:'all',name:'All'},{id:'setup',name:'Setup'},{id:'oct',name:'October'},{id:'nov',name:'November'},{id:'dec',name:'December'},{id:'jan',name:'January'}];
-  nav.innerHTML = opts.map(o=>'<button type="button" data-f="'+o.id+'" aria-pressed="'+(o.id==='all')+'">'+o.name+'</button>').join('');
+  const opts = [['all','All'],['setup','Setup'],['oct','October'],['nov','November'],['dec','December'],['jan','January']];
+  nav.innerHTML = opts.map(o=>'<button type="button" data-f="'+o[0]+'" aria-pressed="'+(o[0]==='all')+'">'+o[1]+'</button>').join('');
   nav.addEventListener('click', e=>{
     const b = e.target.closest('button'); if(!b) return;
-    nav.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', x===b));
-    document.querySelectorAll('.month').forEach(s=>{ s.hidden = !(b.dataset.f==='all' || s.dataset.month===b.dataset.f); });
+    showMonth(b.dataset.f);
   });
 }
+function showMonth(f){
+  document.querySelectorAll('#tabs button').forEach(x=>x.setAttribute('aria-pressed', x.dataset.f===f));
+  document.querySelectorAll('.month').forEach(s=>{ s.hidden = !(f==='all' || s.dataset.month===f); });
+}
 
-const days = Math.ceil((new Date('2027-02-01T00:00:00') - today)/86400000);
-document.getElementById('daysLeft').textContent = Math.max(days,0);
+function goToday(){
+  const w = WEEKS.find(isNow);
+  if(!w){
+    const first = d0(WEEKS[0].s);
+    alert(today < first ? 'The plan starts on 30 September 2026.' : 'The plan is finished. Good luck in your first semester!');
+    return;
+  }
+  showMonth('all');
+  const el = document.getElementById(w.id);
+  el.querySelector('details').open = true;
+  (document.getElementById('today') || el).scrollIntoView({block:'start'});
+}
 
+const daysLeft = Math.ceil((d0('2027-02-01') - today)/86400000);
+document.getElementById('daysLeft').textContent = Math.max(daysLeft,0);
+document.getElementById('jumpBtn').addEventListener('click', goToday);
 document.getElementById('resetBtn').addEventListener('click', ()=>{
   if(confirm('Clear all your ticked tasks? This cannot be undone.')){
     state = {}; save();
@@ -423,8 +629,6 @@ document.getElementById('resetBtn').addEventListener('click', ()=>{
 });
 
 tabs(); render(); update();
-const cur = document.querySelector('.week.now');
-if(cur) setTimeout(()=>cur.scrollIntoView({block:'start'}), 150);
 </script>
 </body>
 </html>
