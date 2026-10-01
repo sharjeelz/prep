@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Road to BS Cybersecurity — Prep Plan (Oct 2026 – Jan 2027)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F6F8; --surface:#FFFFFF; --ink:#1B2A41; --muted:#5E6E82; --line:#D5DDE5;
+  --trace:#0F7C7A; --trace-soft:#DCEFEE; --now:#C98A00; --now-soft:#FFF3D6; --done:#2E8B57;
+  --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,"Courier New",monospace;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1826; --surface:#172234; --ink:#E6EDF5; --muted:#9AA9BC; --line:#2A3A52;
+    --trace:#3FC1BD; --trace-soft:#143A3D; --now:#F2B632; --now-soft:#3A2E10; --done:#5CC98A;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1826; --surface:#172234; --ink:#E6EDF5; --muted:#9AA9BC; --line:#2A3A52;
+  --trace:#3FC1BD; --trace-soft:#143A3D; --now:#F2B632; --now-soft:#3A2E10; --done:#5CC98A;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55}
+a{color:var(--trace);text-underline-offset:2px}
+code{font-family:var(--mono);font-size:.88em;background:var(--trace-soft);padding:.05em .35em;border-radius:4px}
+.wrap{max-width:760px;margin:0 auto;padding:28px 18px 60px}
+
+header h1{font-size:clamp(1.9rem,6vw,2.7rem);line-height:1.1;margin:0 0 10px;letter-spacing:-.02em;font-weight:700}
+header p{margin:0 0 20px;color:var(--muted);max-width:60ch}
+.status{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:flex-end;margin-bottom:14px}
+.status .big{font-size:2.2rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.status small{display:block;color:var(--muted);font-size:.85rem;margin-top:4px}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--trace);transition:width .4s ease}
+
+.routine{margin:26px 0;padding:16px 18px;border-left:4px solid var(--trace);background:var(--surface);border-radius:0 8px 8px 0}
+.routine h2{font-size:1.05rem;margin:0 0 6px}
+.routine ul{margin:0;padding-left:1.1em}
+.routine li{margin:2px 0}
+
+nav.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px 0 14px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5}
+nav.tabs button{font:inherit;font-size:.92rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--now);outline-offset:2px}
+
+.month{margin-top:26px}
+.month h2{font-size:1.35rem;margin:0 0 2px}
+.month .sub{color:var(--muted);margin:0 0 14px;font-size:.95rem}
+
+/* circuit-trace timeline */
+.timeline{position:relative;padding-left:30px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.week{position:relative;margin:0 0 12px}
+.week::before{content:"";position:absolute;left:-26px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+.week.complete::before{background:var(--trace);border-color:var(--trace)}
+.week.now::before{background:var(--now);border-color:var(--now);box-shadow:0 0 0 5px var(--now-soft)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.week.now details{border-color:var(--now)}
+summary{list-style:none;cursor:pointer;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+.wk-date{font-size:.82rem;color:var(--muted);grid-column:1}
+.wk-title{font-weight:600;font-size:1.05rem;grid-column:1}
+.wk-count{grid-row:1/3;grid-column:2;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+.now-tag{display:inline-block;background:var(--now-soft);color:var(--ink);border:1px solid var(--now);font-size:.75rem;padding:0 7px;border-radius:999px;margin-left:6px;vertical-align:2px;font-weight:500}
+.body{padding:0 16px 16px;border-top:1px solid var(--line)}
+.body h3{font-size:.95rem;margin:16px 0 6px;color:var(--trace)}
+.tasks{list-style:none;margin:0;padding:0}
+.tasks li{display:flex;gap:10px;align-items:flex-start;padding:6px 0}
+.tasks input{margin-top:5px;width:18px;height:18px;flex:none;accent-color:var(--trace);cursor:pointer}
+.tasks label{cursor:pointer}
+.tasks input:checked + label{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--muted)}
+.note{font-size:.9rem;color:var(--muted);margin:10px 0 0}
+
+footer{margin-top:40px;color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+footer button{font:inherit;font-size:.88rem;background:none;border:1px solid var(--line);color:var(--muted);padding:6px 12px;border-radius:6px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Road to BS Cybersecurity</h1>
+    <p>A week-by-week plan for the computer subjects of Semesters 1 and 2 (ICT, Programming Fundamentals, Discrete Structures, Digital Logic Design) plus a security head start. Follow the steps in order. Don't go exploring other parts of the sites — just do what's listed.</p>
+    <div class="status">
+      <div><span class="big" id="daysLeft">–</span><small>days until February 1, 2027</small></div>
+      <div><span class="big" id="pct">0%</span><small id="countTxt">tasks done</small></div>
+    </div>
+    <div class="bar" role="progressbar" aria-label="Overall progress" aria-valuemin="0" aria-valuemax="100"><i id="barFill"></i></div>
+  </header>
+
+  <section class="routine">
+    <h2>Daily routine (about 1.5–2 hours)</h2>
+    <ul>
+      <li>45–60 min: the "Learn" items of the current week.</li>
+      <li>30–45 min: the "Practice" items — type every program yourself, never copy-paste.</li>
+      <li>10 min: typing practice on <a href="https://monkeytype.com" target="_blank" rel="noopener">monkeytype.com</a>.</li>
+      <li>Sunday: do the "Done when" check. If you can't do it, repeat the week instead of moving on.</li>
+    </ul>
+  </section>
+
+  <nav class="tabs" aria-label="Filter by month" id="tabs"></nav>
+  <main id="plan"></main>
+
+  <footer>
+    <span>Progress is saved in this browser only.</span>
+    <button id="resetBtn" type="button">Reset progress</button>
+  </footer>
+</div>
+
+<script>
+const LC = 'https://www.learncpp.com';
+const THM = 'https://tryhackme.com';
+const MONTHS = [
+  {id:'setup', name:'Setup', sub:'Get your tools ready before Week 1.'},
+  {id:'oct', name:'October — Computer basics and C++ start', sub:'Subjects: Application of ICT, Programming Fundamentals'},
+  {id:'nov', name:'November — Discrete Structures and more C++', sub:'Subjects: Discrete Structures, Programming Fundamentals'},
+  {id:'dec', name:'December — Digital Logic Design', sub:'Subject: Digital Logic Design'},
+  {id:'jan', name:'January — Security foundations and OOP preview', sub:'Preview of: Computer Networks, Information Security, Object Oriented Programming'}
+];
+
+const WEEKS = [
+{id:'w0',m:'setup',s:'2026-09-30',e:'2026-10-04',t:'Set up your computer',
+ learn:[
+  'Install <b>Code::Blocks</b> from codeblocks.org → Downloads → Binary release → pick the Windows installer that has <code>mingw</code> in its name (it includes the C++ compiler).',
+  'Open Code::Blocks → File → New → Project → Console application → C++. Press <b>F9</b> (Build and run). If "Hello world!" appears, your setup works.'
+ ],
+ practice:[
+  'Create free accounts on <a href="https://www.hackerrank.com" target="_blank" rel="noopener">HackerRank</a> and <a href="'+THM+'" target="_blank" rel="noopener">TryHackMe</a>.',
+  'Make a folder <code>uni-prep</code> with subfolders <code>oct</code>, <code>nov</code>, <code>dec</code>, <code>jan</code>. Save every program there.',
+  'Take one typing test on monkeytype.com and write your speed (WPM) down.'
+ ],
+ check:['Code::Blocks runs a program and you have both accounts.']},
+
+{id:'w1',m:'oct',s:'2026-10-05',e:'2026-10-11',t:'How computers work (ICT)',
+ learn:[
+  'Go to <a href="https://edu.gcfglobal.org/en/computerbasics/" target="_blank" rel="noopener">GCFGlobal — Computer Basics</a> and do the lessons in order (about 2–3 hours total). Skip only the lessons about Mac if you use Windows.',
+  'Watch <b>CS50x Lecture 0</b> (search YouTube for "CS50x Lecture 0 Scratch"). Watch only until the Scratch part starts — the first part covers binary, ASCII, and algorithms.'
+ ],
+ practice:[
+  'On paper, write numbers 0 to 15 in binary.',
+  'Learn 10 shortcuts: Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z, Ctrl+S, Ctrl+F, Alt+Tab, Win+D, Win+E, Ctrl+Shift+Esc. Use them all week.',
+  'In File Explorer: turn on "File name extensions" (View menu). Notice .exe, .txt, .cpp.'
+ ],
+ check:['Explain in your own words: CPU vs RAM vs storage, and what an operating system does.','Convert 13 to binary and 1011 to decimal without help.']},
+
+{id:'w2',m:'oct',s:'2026-10-12',e:'2026-10-18',t:'C++ first steps',
+ learn:[
+  'learncpp.com <b>Chapter 0</b> (Introduction / Getting Started) — read it all. You can skip the lessons about installing Visual Studio since you already have Code::Blocks.',
+  'learncpp.com <b>Chapter 1</b> (C++ Basics) — all lessons, including the quiz at the end.'
+ ],
+ practice:[
+  'Program 1: print your name, city and university on three lines.',
+  'Program 2: ask the user for their age, then print their age in 10 years.',
+  'Program 3: read three numbers and print their sum and average.',
+  'HackerRank → Prepare → C++ → Introduction: solve "Say Hello, World! With C++", "Input and Output", "Basic Data Types".'
+ ],
+ check:['You can write Program 3 from a blank file without looking anything up.']},
+
+{id:'w3',m:'oct',s:'2026-10-19',e:'2026-10-25',t:'C++ functions and data types',
+ learn:[
+  'learncpp.com <b>Chapter 2</b> (C++ Basics: Functions and Files) — lessons 2.1 to 2.7. Skip the multi-file lessons after that for now.',
+  'learncpp.com <b>Chapter 4</b> (Fundamental Data Types) — all lessons.'
+ ],
+ practice:[
+  'Write functions <code>add(a, b)</code>, <code>maxOf(a, b)</code>, and <code>circleArea(r)</code>, and call them from main().',
+  'Temperature converter: read Celsius, print Fahrenheit (F = C × 9/5 + 32). Use a function.',
+  'HackerRank C++ Introduction: "Conditional Statements" and "Functions".'
+ ],
+ check:['You know the difference between int, double, char, bool, and why 7/2 gives 3 in C++.']},
+
+{id:'w4',m:'oct',s:'2026-10-26',e:'2026-11-01',t:'C++ decisions and loops + Excel basics',
+ learn:[
+  'learncpp.com <b>Chapter 6</b> (Operators) — all lessons.',
+  'learncpp.com <b>Chapter 8</b> (Control Flow) — all lessons (if, switch, while, do-while, for, break, continue, random numbers).',
+  '<a href="https://edu.gcfglobal.org/en/excel/" target="_blank" rel="noopener">GCFGlobal — Excel</a>: only the lessons on cells, formulas, and functions.'
+ ],
+ practice:[
+  'Even/odd checker.',
+  'Grade calculator: marks → A/B/C/D/F.',
+  'Print the multiplication table of any number the user types.',
+  'FizzBuzz for 1 to 100.',
+  'Number guessing game: computer picks 1–100, user guesses, program says "higher" or "lower".',
+  'HackerRank C++ Introduction: "For Loop".',
+  'Excel: make a sheet of your daily study hours for October with SUM and AVERAGE.'
+ ],
+ check:['You can build the guessing game from scratch in under 30 minutes.']},
+
+{id:'w5',m:'nov',s:'2026-11-02',e:'2026-11-08',t:'Logic and truth tables',
+ learn:[
+  'Discrete Structures — Rosen\'s <i>Discrete Mathematics and Its Applications</i> (your likely course book), sections <b>1.1, 1.2, 1.3</b>: propositions, AND/OR/NOT, implication, biconditional, truth tables, logical equivalence. For video help, search YouTube "Neso Academy propositional logic".',
+  'learncpp.com <b>Chapter 5</b> (Constants and Strings) — focus on std::string lessons.'
+ ],
+ practice:[
+  'Make truth tables on paper for: p → q, p ↔ q, ¬(p ∧ q), and (p → q) ∧ (q → p).',
+  'Prove ¬(p ∨ q) ≡ ¬p ∧ ¬q (De Morgan) using a truth table.',
+  'C++: write a program that prints the truth table of p AND q, p OR q, and p → q using nested loops over true/false.',
+  'C++: ask for the user\'s full name and print it in reverse and its length.'
+ ],
+ check:['You can make a truth table for any 3-variable statement and tell if it\'s a tautology.']},
+
+{id:'w6',m:'nov',s:'2026-11-09',e:'2026-11-15',t:'Quantifiers, inference + arrays',
+ learn:[
+  'Rosen sections <b>1.4, 1.5, 1.6</b>: predicates, ∀ and ∃, nested quantifiers, rules of inference (modus ponens, modus tollens, etc.).',
+  'learncpp.com <b>Chapter 16</b> (Dynamic arrays: std::vector) — lessons 16.1 to 16.6 are enough.'
+ ],
+ practice:[
+  'Translate 5 English sentences into logic with quantifiers, e.g. "Every student in this class has a laptop".',
+  'C++: store 10 marks in an array; print max, min and average.',
+  'C++: reverse an array, and do a linear search for a number the user enters.',
+  'HackerRank C++ Introduction: "Arrays Introduction" and "Variable Sized Arrays".'
+ ],
+ check:['You can write the negation of "∀x ∃y P(x, y)" correctly.']},
+
+{id:'w7',m:'nov',s:'2026-11-16',e:'2026-11-22',t:'Proofs, sets + references and pointers',
+ learn:[
+  'Rosen sections <b>1.7, 1.8</b> (direct proof, contrapositive, contradiction) and <b>2.1, 2.2</b> (sets, set operations, Venn diagrams).',
+  'learncpp.com <b>Chapter 12</b> (Compound Types: References and Pointers) — all lessons. Go slowly, this is the hardest topic so far.'
+ ],
+ practice:[
+  'Prove: "If n is odd, then n² is odd" (direct proof). Prove "√2 is irrational" by following the book\'s contradiction proof in your own words.',
+  'For A = {1,2,3,4}, B = {3,4,5}: find A∪B, A∩B, A−B, and the power set of B.',
+  'C++: write swap() twice — once using references and once using pointers.',
+  'C++: find the union and intersection of two arrays.'
+ ],
+ check:['You can explain what <code>int* p = &x;</code> and <code>*p = 5;</code> do.']},
+
+{id:'w8',m:'nov',s:'2026-11-23',e:'2026-11-29',t:'Functions, relations, counting + mini project',
+ learn:[
+  'Rosen sections <b>2.3</b> (functions: one-to-one, onto), <b>5.1</b> (induction), <b>6.1–6.3</b> (counting, pigeonhole, permutations and combinations), <b>9.1</b> (relations and their properties).',
+  'learncpp.com <b>Chapter 13</b> — only the lessons about structs.'
+ ],
+ practice:[
+  'Prove by induction: 1 + 2 + … + n = n(n+1)/2.',
+  'Solve 5 counting problems from the exercises at the end of Rosen 6.3.',
+  'Mini project: Student Record program with a struct (name, roll no, marks). Menu: 1) Add student 2) Show all 3) Show class average 4) Exit.'
+ ],
+ check:['Your Student Record program works without crashing for 5 students.']},
+
+{id:'w9',m:'dec',s:'2026-11-30',e:'2026-12-06',t:'Number systems',
+ learn:[
+  'Search YouTube "Neso Academy Digital Electronics" and open their Digital Electronics playlist. Watch only the Number Systems videos: decimal, binary, octal, hexadecimal, conversions, 1\'s and 2\'s complement, binary addition and subtraction.'
+ ],
+ practice:[
+  'Convert by hand: 156 to binary, octal and hex; 0x3F to decimal; 101101 to hex.',
+  'Find the 8-bit 2\'s complement of −25. Do 7 − 12 in binary using 2\'s complement.',
+  'C++: decimal-to-binary converter (use % 2 and / 2 in a loop).',
+  'C++: binary-to-decimal converter.'
+ ],
+ check:['You can convert between all four bases without a calculator.']},
+
+{id:'w10',m:'dec',s:'2026-12-07',e:'2026-12-13',t:'Logic gates and Boolean algebra',
+ learn:[
+  'Neso Academy playlist: Logic Gates videos (AND, OR, NOT, NAND, NOR, XOR, XNOR, universal gates), then Boolean Algebra videos (laws, De Morgan\'s theorem).',
+  '<a href="https://www.nand2tetris.org" target="_blank" rel="noopener">nand2tetris.org</a> → open Project 1 (Boolean Logic). Read the Chapter 1 PDF linked there.'
+ ],
+ practice:[
+  'nand2tetris Project 1, using the online IDE on their site: build <b>Not, And, Or, Xor, Mux, DMux</b> only (skip the 16-bit ones for now).',
+  'Simplify with Boolean laws: AB + AB\' , (A + B)(A + B\'), A + A\'B.',
+  'Show that NAND alone can make NOT, AND and OR (draw it).'
+ ],
+ check:['All 6 chips pass the tests in the nand2tetris simulator.']},
+
+{id:'w11',m:'dec',s:'2026-12-14',e:'2026-12-20',t:'K-maps, SOP and POS',
+ learn:[
+  'Neso Academy playlist: SOP and POS forms, minterms and maxterms, then all Karnaugh Map videos (2, 3 and 4 variables, don\'t-care conditions).'
+ ],
+ practice:[
+  'Solve 10 K-map problems: 3 with 3 variables, 5 with 4 variables, 2 with don\'t-cares. Check each answer by making a truth table.',
+  'Write the SOP expression from any truth table you invent, then simplify it with a K-map.'
+ ],
+ check:['You can simplify F(A,B,C,D) = Σm(0,2,5,7,8,10,13,15) with a K-map.']},
+
+{id:'w12',m:'dec',s:'2026-12-21',e:'2026-12-27',t:'Combinational circuits',
+ learn:[
+  'Neso Academy playlist: Half Adder, Full Adder, Half/Full Subtractor, Multiplexer, Demultiplexer, Decoder, Encoder.',
+  'nand2tetris → Project 2 (Boolean Arithmetic): read the Chapter 2 PDF.'
+ ],
+ practice:[
+  'nand2tetris Project 2: build <b>HalfAdder, FullAdder, Add16, Inc16</b>. The ALU is optional (hard but great practice).',
+  'Draw a 4-to-1 multiplexer and a 2-to-4 decoder from gates.'
+ ],
+ check:['You can draw a full adder from memory and explain its truth table.']},
+
+{id:'w13',m:'dec',s:'2026-12-28',e:'2027-01-03',t:'Review week + flip-flops intro',
+ learn:[
+  'Neso Academy playlist: only the first videos on Sequential Circuits — latches and SR, D, JK flip-flops.',
+  'Go back over any week where you didn\'t pass the "Done when" check.'
+ ],
+ practice:[
+  'Redo the Week 8 Student Record program from memory, then add "search by roll no".',
+  'Make a one-page summary sheet for Discrete Structures and one for DLD (formulas, laws, rules). Keep them for the semester.'
+ ],
+ check:['Both summary sheets are written, by hand or on your computer.']},
+
+{id:'w14',m:'jan',s:'2027-01-04',e:'2027-01-10',t:'Linux command line',
+ learn:[
+  'TryHackMe rooms, in order: <b>Linux Fundamentals Part 1</b>, <b>Part 2</b>, <b>Part 3</b>. Use the in-browser machine the room gives you — no install needed.'
+ ],
+ practice:[
+  '<a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener">OverTheWire Bandit</a>: levels 0 → 5. Read each level\'s page on their site before trying. Note every password in a text file.',
+  'Memorise: <code>ls</code> <code>cd</code> <code>pwd</code> <code>cat</code> <code>find</code> <code>grep</code> <code>chmod</code> <code>ssh</code> <code>man</code>.'
+ ],
+ check:['You finished Bandit level 5 without looking up solutions.']},
+
+{id:'w15',m:'jan',s:'2027-01-11',e:'2027-01-17',t:'Networking basics',
+ learn:[
+  'TryHackMe rooms, in order: <b>What is Networking?</b>, <b>Intro to LAN</b>, <b>OSI Model</b>, <b>Packets &amp; Frames</b>, <b>Extending Your Network</b>. Search each name in TryHackMe\'s search bar.'
+ ],
+ practice:[
+  'Draw the 7 OSI layers and write one protocol or device for each.',
+  'On your PC, run <code>ipconfig</code> (Windows) and find your IP address, subnet mask and default gateway. Then run <code>ping google.com</code> and <code>tracert google.com</code>.',
+  'Bandit levels 6 → 10.'
+ ],
+ check:['You can explain what happens between typing a URL and a page loading, in 5 steps.']},
+
+{id:'w16',m:'jan',s:'2027-01-18',e:'2027-01-24',t:'Web and security basics',
+ learn:[
+  'TryHackMe rooms, in order: <b>DNS in Detail</b>, <b>HTTP in Detail</b>, <b>How Websites Work</b>, <b>Intro to Offensive Security</b>, <b>Intro to Defensive Security</b>.',
+  'Learn these terms well: CIA triad (Confidentiality, Integrity, Availability), phishing, malware, ransomware, brute force, 2FA, encryption vs hashing.'
+ ],
+ practice:[
+  'Bandit levels 11 → 15.',
+  'Turn on 2FA for your email and social accounts.',
+  'Write one paragraph for each CIA triad pillar with a real-life example of it being attacked.'
+ ],
+ check:['You can explain the difference between encryption and hashing to a friend.']},
+
+{id:'w17',m:'jan',s:'2027-01-25',e:'2027-01-31',t:'OOP preview + final review',
+ learn:[
+  'learncpp.com <b>Chapter 14</b> (Introduction to Classes) — lessons 14.1 to 14.9.'
+ ],
+ practice:[
+  'Rewrite the Student Record program using a class instead of a struct.',
+  'BankAccount class: deposit(), withdraw() (block if balance too low), showBalance().',
+  'Final check: open every week above and redo one "Done when" task from each month.'
+ ],
+ check:['You feel ready for Semester 1. Good luck! 🎓']}
+];
+
+const KEY = 'uol-cyber-prep-v1';
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e) { state = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} }
+
+const fmt = d => new Date(d+'T00:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+const today = new Date(); today.setHours(0,0,0,0);
+const isNow = w => today >= new Date(w.s+'T00:00:00') && today <= new Date(w.e+'T00:00:00');
+
+function taskList(w, key, items){
+  return '<ul class="tasks">' + items.map((txt,i)=>{
+    const id = w.id+'-'+key+i;
+    return '<li><input type="checkbox" id="'+id+'" data-id="'+id+'" '+(state[id]?'checked':'')+'><label for="'+id+'">'+txt+'</label></li>';
+  }).join('') + '</ul>';
+}
+function allIds(w){ const a=[]; ['learn','practice','check'].forEach(k=>w[k].forEach((_,i)=>a.push(w.id+'-'+k+i))); return a; }
+
+function render(){
+  const plan = document.getElementById('plan');
+  plan.innerHTML = MONTHS.map(m=>{
+    const weeks = WEEKS.filter(w=>w.m===m.id);
+    return '<section class="month" data-month="'+m.id+'"><h2>'+m.name+'</h2><p class="sub">'+m.sub+'</p><div class="timeline">'+
+      weeks.map(w=>{
+        const now = isNow(w);
+        const label = w.id==='w0' ? 'Setup' : 'Week '+w.id.slice(1);
+        return '<article class="week'+(now?' now':'')+'" data-week="'+w.id+'"><details'+(now?' open':'')+'><summary>'+
+          '<span class="wk-date">'+label+', '+fmt(w.s)+' – '+fmt(w.e)+(now?'<span class="now-tag">This week</span>':'')+'</span>'+
+          '<span class="wk-title">'+w.t+'</span><span class="wk-count"></span></summary><div class="body">'+
+          '<h3>Learn</h3>'+taskList(w,'learn',w.learn)+
+          '<h3>Practice</h3>'+taskList(w,'practice',w.practice)+
+          '<h3>Done when</h3>'+taskList(w,'check',w.check)+
+          '</div></details></article>';
+      }).join('') + '</div></section>';
+  }).join('');
+  plan.addEventListener('change', e=>{
+    if(e.target.matches('input[type=checkbox]')){ state[e.target.dataset.id] = e.target.checked; save(); update(); }
+  });
+}
+
+function update(){
+  let total=0, done=0;
+  WEEKS.forEach(w=>{
+    const ids = allIds(w); const d = ids.filter(id=>state[id]).length;
+    total+=ids.length; done+=d;
+    const el = document.querySelector('[data-week="'+w.id+'"]');
+    el.querySelector('.wk-count').textContent = d+'/'+ids.length;
+    el.classList.toggle('complete', d===ids.length);
+  });
+  const p = Math.round(done/total*100);
+  document.getElementById('pct').textContent = p+'%';
+  document.getElementById('countTxt').textContent = done+' of '+total+' tasks done';
+  document.getElementById('barFill').style.width = p+'%';
+  document.querySelector('[role=progressbar]').setAttribute('aria-valuenow', p);
+}
+
+function tabs(){
+  const nav = document.getElementById('tabs');
+  const opts = [{id:'all',name:'All'},{id:'setup',name:'Setup'},{id:'oct',name:'October'},{id:'nov',name:'November'},{id:'dec',name:'December'},{id:'jan',name:'January'}];
+  nav.innerHTML = opts.map(o=>'<button type="button" data-f="'+o.id+'" aria-pressed="'+(o.id==='all')+'">'+o.name+'</button>').join('');
+  nav.addEventListener('click', e=>{
+    const b = e.target.closest('button'); if(!b) return;
+    nav.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', x===b));
+    document.querySelectorAll('.month').forEach(s=>{ s.hidden = !(b.dataset.f==='all' || s.dataset.month===b.dataset.f); });
+  });
+}
+
+const days = Math.ceil((new Date('2027-02-01T00:00:00') - today)/86400000);
+document.getElementById('daysLeft').textContent = Math.max(days,0);
+
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  if(confirm('Clear all your ticked tasks? This cannot be undone.')){
+    state = {}; save();
+    document.querySelectorAll('.tasks input').forEach(i=>i.checked=false); update();
+  }
+});
+
+tabs(); render(); update();
+const cur = document.querySelector('.week.now');
+if(cur) setTimeout(()=>cur.scrollIntoView({block:'start'}), 150);
+</script>
+</body>
+</html>
